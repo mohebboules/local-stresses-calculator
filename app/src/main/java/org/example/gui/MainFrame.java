@@ -509,7 +509,7 @@ public class MainFrame extends JFrame {
             valueField.getDocument().addDocumentListener(new SimpleDocumentListener(() -> {
                 model.staticValue = valueField.getText();
             }));
-            row.add(new JLabel("Value: (MPa)"));
+            row.add(new JLabel("Value: "));
             row.add(valueField);
             panel.add(row);
             staticFields.put(lt, valueField);

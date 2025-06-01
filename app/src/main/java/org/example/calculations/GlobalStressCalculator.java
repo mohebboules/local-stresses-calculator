@@ -55,7 +55,7 @@ public class GlobalStressCalculator {
           }
           break;
         }
-          case TankType.SPHERICAL_TANK:
+        case TankType.SPHERICAL_TANK:
         {    
           if (bundle.loads.containsKey(LoadType.INTERNAL_PRESSURE)) {
             sigmaY.add(calculateSphericalTankStress(bundle.loads.get(LoadType.INTERNAL_PRESSURE), bundle.externalDiameter, bundle.internalDiameter));
@@ -64,22 +64,11 @@ public class GlobalStressCalculator {
           break;
         }
         default:
-            throw new IllegalArgumentException("Invalid tank type: " + bundle.tankType);
+          throw new IllegalArgumentException("Invalid tank type: " + bundle.tankType);
 
     }
-          //  System.out.println("SigmaX Stresses:");
-          // for (StressModel stress : sigmaX) {
-          //   System.out.println(String.valueOf(stress.getStaticValue()));
-          // }
-          // System.out.println("SigmaY Stresses:");
-          // for (StressModel stress : sigmaY) {
-          //   System.out.println(stress);
-          // }
-          // System.out.println("TauXY Stresses:");
-          // for (StressModel stress : tauXY) {
-          //   System.out.println(stress);
-          // }
-  return new GlobalStressModel(sigmaX, sigmaY, tauXY);
+       
+    return new GlobalStressModel(sigmaX, sigmaY, tauXY);
   }
 
   private StressModel calculateTorsionStress(LoadComputationalModel torque, double externalDiameter, double internalDiameter) {
