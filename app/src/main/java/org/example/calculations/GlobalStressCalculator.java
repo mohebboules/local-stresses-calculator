@@ -9,7 +9,6 @@ import org.example.calculations.Models.StaticStressModel;
 import org.example.calculations.Models.StressModel;
 import org.example.calculations.Models.VariableStressModel;
 import org.example.calculations.enums.LoadType;
-import org.example.calculations.enums.TankType;
 import org.example.calculations.enums.Variation;
 
 public class GlobalStressCalculator {
@@ -22,7 +21,7 @@ public class GlobalStressCalculator {
     sigmaY.add(new StaticStressModel(0));
     tauXY.add(new StaticStressModel(0));
     switch (bundle.tankType) {
-        case TankType.OPEN_CYLINDER:
+        case OPEN_CYLINDER:
         {    
           if (bundle.loads.containsKey(LoadType.AXIAL_FORCE)) {
             sigmaX.add(calculateAxialStress(bundle.loads.get(LoadType.AXIAL_FORCE), bundle.externalDiameter, bundle.internalDiameter));
@@ -38,7 +37,7 @@ public class GlobalStressCalculator {
           }
           break;
         }
-        case TankType.CLOSED_CYLINDER:
+        case CLOSED_CYLINDER:
         {    
           if (bundle.loads.containsKey(LoadType.AXIAL_FORCE)) {
             sigmaX.add(calculateAxialStress(bundle.loads.get(LoadType.AXIAL_FORCE), bundle.externalDiameter, bundle.internalDiameter));
@@ -55,7 +54,7 @@ public class GlobalStressCalculator {
           }
           break;
         }
-        case TankType.SPHERICAL_TANK:
+        case SPHERICAL_TANK:
         {    
           if (bundle.loads.containsKey(LoadType.INTERNAL_PRESSURE)) {
             sigmaY.add(calculateSphericalTankStress(bundle.loads.get(LoadType.INTERNAL_PRESSURE), bundle.externalDiameter, bundle.internalDiameter));
